@@ -1,24 +1,17 @@
-import type { NextPage } from 'next';
-import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import { Input, Modal, InputNumber, Form, Popover, Row, Col, Button, message } from "antd";
-import { Space, Table, Tag } from 'antd';
+import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import {getMembers, deleteMembers, postMembers} from '../AxiosAPI'
 
-const validateMessages = {
-  required: "label is required!",
-  types: {
-    email: "label is not a valid email!",
-    number: "label is not a valid number!"
-  }
-};
 
+//antd style
 const layout = {
   labelCol: { span: 5 },
   wrapperCol: { span: 16 }
 };
 
+//antd component type
 interface DataType {
   id: number;
   name: string;
@@ -27,6 +20,7 @@ interface DataType {
 }
 
 const Home = () => {
+  //antd component
   const columns: ColumnsType<DataType> = [
     {
       title: 'Id',
@@ -53,35 +47,39 @@ const Home = () => {
           <div>
             <Button onClick={() => { handleVisible(record); }}>Cancel</Button>
             <Button type="primary" onClick={() => { handleConfirm(record); }}>Confirm</Button>
-          </div>}
-        title="Are you sure to delete?"
-        trigger="click"
-        visible={keyValue === record.key && visible}
-        onVisibleChange={() => { handleVisible(record); }}
-      ><a>Delete</a></Popover>
+          </div>
+        }
+          title="Are you sure to delete?"
+          trigger="click"
+          visible={keyValue === record.key && visible}
+          onVisibleChange={() => { handleVisible(record); }}
+        >
+          <a>Delete</a>
+        </Popover>
       ),
     },
   ];
 
   const [tableData, setTableData] = useState<any>();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [editForm, setEditForm] = useState<any>();
   const [form] = Form.useForm();
   const [mounted, setMounted] = useState(false);
   const [keyValue, setKeyValue] = useState<number>(-1);
   const [visible, setVisible] = useState<boolean>(false);
   
+  //get the members from backend
   const fetchData = async () => {
     const result = await getMembers('/People');
     let data = result.data.map((item:any)=>{
       return{
         ...item,
-        key: item.id
+        key:item.id
       }
     })
     setTableData(data);
   }
 
+  //delete popConfirm will pop up 
   const handleVisible = (record:any) => {
     setKeyValue(record.key);
     if (visible) {
@@ -93,42 +91,45 @@ const Home = () => {
     }
   };
 
+  //confirm to delete the member
   const handleConfirm = (record: any) => {
     setVisible(!visible);
     setKeyValue(-1);
     deleteMembers('/People?id=', `${record.id}`).then(()=>{
-      fetchData()
-      success("Successful Delete A Person")
+      fetchData();
+      success("Successful Delete A Person");
     }).catch(()=>{
-      error("Unsuccessful Delete A Person")
+      error("Unsuccessful Delete A Person");
     });
   };
 
+  //cancel delete popConfirm
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
   useEffect(()=>{
     fetchData();
-    setMounted(true)
+    setMounted(true);
   },[])
 
+  //when you successful add or delete a person, the success message will pop up
   const success = (info:string) => {
     message.success(info);
   };
 
+  //when you unsuccessful add or delete a person, the error message will pop up
   const error = (info:string) =>{
-    message.error(info)
+    message.error(info);
   }
 
+  //the add members model will pop up
   const showModal = () => {
-    setEditForm({
-      name: "",
-      email: ""
-    });
     setIsModalVisible(true);
   };
 
+  //when users click submit in add members model, this function will be called to submit information to backend 
+  //updating web page
   const onCreate = (values:any) => {
     setIsModalVisible(false);
     values = {
@@ -136,10 +137,10 @@ const Home = () => {
       age: values.age
     };
     postMembers("/People", values).then(()=>{
-      fetchData()
-      success('Successful Adds A Person')
+      fetchData();
+      success('Successful Adds A Person');
     }).catch(()=>{
-      error("Only Allows Members With An E Or e In Their Name")
+      error("Only Allows Members With An E Or e In Their Name");
     })
   };
 
@@ -172,7 +173,7 @@ const Home = () => {
                     });
                 }}
               >
-                <Form {...layout} form={form} name="nest-messages" validateMessages={validateMessages}>
+                <Form {...layout} form={form} name="nest-messages">
                   <Form.Item name={"age"} label="Age" rules={[{ required: true }]}>
                     <InputNumber />
                   </Form.Item>
