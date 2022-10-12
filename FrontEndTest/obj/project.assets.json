@@ -213,11 +213,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jiangguocheng/Desktop/FrontEndTakeHome/FrontEndTest/FrontEndTest.csproj",
+      "projectUniqueName": "/Users/jiangguocheng/Desktop/aeroqual-front-end-test/FrontEndTest/FrontEndTest.csproj",
       "projectName": "FrontEndTest",
-      "projectPath": "/Users/jiangguocheng/Desktop/FrontEndTakeHome/FrontEndTest/FrontEndTest.csproj",
+      "projectPath": "/Users/jiangguocheng/Desktop/aeroqual-front-end-test/FrontEndTest/FrontEndTest.csproj",
       "packagesPath": "/Users/jiangguocheng/.nuget/packages/",
-      "outputPath": "/Users/jiangguocheng/Desktop/FrontEndTakeHome/FrontEndTest/obj/",
+      "outputPath": "/Users/jiangguocheng/Desktop/aeroqual-front-end-test/FrontEndTest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/jiangguocheng/.nuget/NuGet/NuGet.Config"

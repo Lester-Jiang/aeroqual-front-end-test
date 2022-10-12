@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UPNux4oS4V8kwTGM4PyCAZ36LlbzsDlpX3lYpq3MxRo23JzpwnryeVtxtK95ew1dM0nV5GHyK+JiMWfeoj+Ucg==",
+  "dgSpecHash": "9SWVjA+MskvKKBTvNjr8eNKd9cwMuoc91kk++x7IRgOvtkgFkadJbKL/8RuOFRthQ3mIe1n59jCsBQFjXAx8bQ==",
   "success": true,
-  "projectFilePath": "/Users/jiangguocheng/Desktop/FrontEndTakeHome/FrontEndTest/FrontEndTest.csproj",
+  "projectFilePath": "/Users/jiangguocheng/Desktop/aeroqual-front-end-test/FrontEndTest/FrontEndTest.csproj",
   "expectedPackageFiles": [
     "/Users/jiangguocheng/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/Users/jiangguocheng/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",

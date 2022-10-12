@@ -20,6 +20,23 @@ interface DataType {
 }
 
 const Home = () => {
+  class A{
+    a: any;
+    b: any;
+    c: any;
+    constructor(a:any,b:any,c:any){
+      this.a=a;
+      this.b=b;
+      this.c=c;
+    }
+
+    // build(a:any,b:any,c:any){
+    //   this.dict={}
+    //   this.dict[a] = a
+    //   this.dict[b] = b
+    //   this.dict[c] = c
+    // }
+  }
   //antd component
   const columns: ColumnsType<DataType> = [
     {
